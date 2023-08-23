@@ -2,8 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { viteSingleFile } from "vite-plugin-singlefile"
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import { resolve } from 'path' 
-console.log(proxyPlugin)
+import { resolve } from 'path'
 const pathResolve = (dir) => {  
   return resolve(__dirname, ".", dir)          
 }
@@ -18,7 +17,6 @@ export default defineConfig({
     vue(),
     // viteSingleFile(),
     vueJsx(),
-    
   ],
   base:'./',
   resolve:{
