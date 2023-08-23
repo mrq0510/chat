@@ -26,21 +26,21 @@ export default defineConfig({
     port:8089,
     // host:'192.168.1.48',
     open:true,
-    // proxy:{
-    //   "/server1":{
-    //     target:"https://yjqyphm377.us.aircode.run",
-    //     changeOrigin: true,
-    //     ws: true,
-    //     secure: false,
-    //     rewrite:(path) => path.replace(/^\/server1/, '')
-    //   },
-    //   "/server2":{
-    //     target:"https://2n8gkwwm28.us.aircode.run/",
-    //     changeOrigin: true,
-    //     ws: true,
-    //     secure: false,
-    //     rewrite:(path) => path.replace(/^\/server2/, '')
-    //   }
-    // }
+    proxy:{
+      "/server1":{
+        target:"https://yjqyphm377.us.aircode.run",
+        changeOrigin: true,
+        ws: true,
+        secure: false,
+        rewrite:(path) => path.replace(/^\/server1/, '')
+      },
+      "/server2":{
+        target:"https://2n8gkwwm28.us.aircode.run/",
+        changeOrigin: true,
+        ws: true,
+        secure: false,
+        rewrite:(path) => path.replace(/^\/server2/, '')
+      }
+    }
   }
 })
