@@ -5,7 +5,7 @@ import router from "./router"
 import piniaPersist from 'pinia-plugin-persist'
 import _ from "lodash";
 window._ = _;
-
+console.log('测试',_)
 import {createPinia} from "pinia"
 
 import Antd from 'ant-design-vue';
