@@ -36,7 +36,7 @@
                                 <span style="font-size: 16px;" v-show="!sliderIsOpen"> {{ service.name }} </span>
                             </template>
                         </a-list-item-meta>
-                        <a-select @change="serverChange" v-model:value="SERCERS.active" style="position: absolute;top:0;left:0;width:94%;height:100%;opacity:0" placement="topLeft">
+                        <a-select @change="(value,option)=>{serverChange(value,option)}" v-model:value="SERCERS.active" style="position: absolute;top:0;left:0;width:94%;height:100%;opacity:0" placement="topLeft">
                             <a-select-option :value="index" v-for="(it,index) in sercers.servers"> {{ it.name }} </a-select-option>
                         </a-select>
                     </a-list-item>
@@ -79,7 +79,8 @@ import Chart from "@/api/chart.api.js"
 import {useRouter} from "vue-router"
 import {sercers} from "@/api/service"
 
-const SERCERS = ref(sercers)
+const SERCERS = ref(sercers);
+console.log(SERCERS.value)
 const store = home();
 
 const router = useRouter();

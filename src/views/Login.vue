@@ -11,7 +11,7 @@
                         </span>
                     </template>
 
-                    <a-form :model="formState" name="normal_login" class="login-form" @finish="onFinish"
+                    <a-form :model="formState" name="normal_login" class="login-form" @finish="values=>{onFinish(values)}"
                         @finishFailed="onFinishFailed">
                         <a-form-item label="用户名" name="username"
                             :rules="[{ required: true, message: 'Please input your username!' }]">

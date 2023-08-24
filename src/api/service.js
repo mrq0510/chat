@@ -7,20 +7,24 @@ const service = axios.create({
 const sercers=new Proxy({servers:[
     {
         name:'服务器1',
-        server:'https://yjqyphm377.us.aircode.run'
+        server:'https://yjqyphm377.us.aircode.run/'
     },
     {
         name:'服务器2',
         server:'https://2n8gkwwm28.us.aircode.run/'
     }
-],active:0},{
+],active:1},{
     set(target,p,value){
         if(p==='servers'){
             return false;
         }
-        console.log(p,value);
+        console.log(p,value,import.meta.env.MODE);
         target[p]=value;
-        service.defaults.baseURL=`/server${sercers.active+1}`
+        if(import.meta.env.MODE=='development'){
+            service.defaults.baseURL=`/server${target.active+1}`
+        }else{
+            service.defaults.baseURL=target.servers[target.active].server
+        }
         return true
     },
     get(target,prop){
@@ -28,8 +32,9 @@ const sercers=new Proxy({servers:[
     },
 })
 sercers.active=1
+//刷新服务器不会断
 let home = JSON.parse(sessionStorage.getItem('home')||'{}')
-if(!_.isEmpty(home)){
+if(!_.isEmpty(home) && home.SERVERACTIVE){
     sercers.active=home.SERVERACTIVE
 }
 

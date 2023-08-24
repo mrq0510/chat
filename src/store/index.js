@@ -80,7 +80,8 @@ export default defineStore('home',{
         async loginout(){
             let res = await User.loginout(this.user._id);
             this.menus=[];
-            this.chartKey=['']
+            this.chartKey=[''];
+            this.user={}
             return res
         },
         async deleteChatGroup(new_chart_id){
